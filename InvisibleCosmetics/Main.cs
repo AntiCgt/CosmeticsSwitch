@@ -18,7 +18,6 @@ namespace CosmeticsSwitch
         {
             Harmony harmony = new Harmony("AC.CosmeticsSwitch");
             harmony.PatchAll();
-            Debug.Log("This code working");
         }
         void Start()
         {
@@ -114,7 +113,6 @@ namespace CosmeticsSwitch
 
                         cosmeticInstance.EnableItem(GetSlotByItemCategory(item), VRRig.LocalRig);
                     }
-                    Debug.Log("Cosmetics ON");
                 }
                 else
                 {
@@ -125,7 +123,6 @@ namespace CosmeticsSwitch
 
                         DisableCosmeticsForPlayer(VRRig.LocalRig);
                     }
-                    Debug.Log("Cosmetics OFF");
                 }
             }
         }
