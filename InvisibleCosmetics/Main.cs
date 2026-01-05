@@ -35,13 +35,10 @@ namespace CosmeticsSwitch
                     var hitRig = SimpleGun.GetHitPlayer(hit);
                     if (hitRig != null && !hitRig.isLocal)
                     {
-                        // ПРОВЕРЯЕМ В СЛОВАРЕ
                         if (playerCosmeticsState.TryGetValue(hitRig, out bool currentState))
                         {
-                            // Есть в словаре - переключаем
                             if (currentState)
                             {
-                                // Было включено - выключаем
                                 foreach (var item in hitRig.cosmeticSet.items)
                                 {
                                     hitRig.cosmeticsObjectRegistry?.Cosmetic(item.displayName)?.DisableItem((CosmeticSlots)item.itemCategory);
@@ -50,7 +47,6 @@ namespace CosmeticsSwitch
                             }
                             else
                             {
-                                // Было выключено - включаем
                                 foreach (var item in hitRig.cosmeticSet.items)
                                 {
                                     hitRig.cosmeticsObjectRegistry?.Cosmetic(item.displayName)?.EnableItem(GetSlotByItemCategory(item), hitRig);
@@ -60,7 +56,6 @@ namespace CosmeticsSwitch
                         }
                         else
                         {
-                            // Нет в словаре - первый раз, выключаем
                             foreach (var item in hitRig.cosmeticSet.items)
                             {
                                 hitRig.cosmeticsObjectRegistry?.Cosmetic(item.displayName)?.DisableItem((CosmeticSlots)item.itemCategory);
@@ -157,7 +152,7 @@ namespace CosmeticsSwitch
                 case CosmeticCategory.Back:
                     return CosmeticSlots.Back;
                 default:
-                    return CosmeticSlots.Hat; // Значение по умолчанию
+                    return CosmeticSlots.Hat;
             }
         }
         void DisableCosmeticsForPlayer(VRRig playerRig)
